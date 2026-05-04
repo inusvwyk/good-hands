@@ -56,13 +56,20 @@ function trackEvent(eventName, label) {
 }
 
 // ── CALL TRACKING ────────────────────────────────────────────
+var lastWaClick = 0;
+function fireWaConversion(label) {
+  var now = Date.now();
+  if (now - lastWaClick < 1000) return; // deduplicate — ignore if fired within 1s
+  lastWaClick = now;
+  trackEvent('phone_call_click', label);
+  if (window.gtag) {
+    gtag('event', 'conversion', { send_to: 'AW-17948840298/uDWQCLzt3oMcEOqi1u5C' });
+  }
+}
+
 document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function(link) {
   link.addEventListener('click', function() {
-    var label = this.dataset.gtm || 'call-unknown';
-    trackEvent('phone_call_click', label);
-    if (window.gtag) {
-      gtag('event', 'conversion', { send_to: 'AW-17948840298/uDWQCLzt3oMcEOqi1u5C' });
-    }
+    fireWaConversion(this.dataset.gtm || 'call-unknown');
   });
 });
 
@@ -248,9 +255,6 @@ document.querySelectorAll('a[href="#book"]').forEach(function(link) {
   window.addEventListener('resize', checkScroll, { passive: true });
 
   bar.querySelector('a').addEventListener('click', function() {
-    trackEvent('phone_call_click', 'call-sticky');
-    if (window.gtag) {
-      gtag('event', 'conversion', { send_to: 'AW-17948840298/uDWQCLzt3oMcEOqi1u5C' });
-    }
+    fireWaConversion('call-sticky');
   });
 })();

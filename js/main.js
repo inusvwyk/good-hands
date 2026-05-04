@@ -83,6 +83,7 @@ var fields = [
   { id: 'name',  errorId: 'name-error' },
   { id: 'phone', errorId: 'phone-error' },
   { id: 'area',  errorId: 'area-error' },
+  { id: 'car',   errorId: 'car-error'  },
   { id: 'issue', errorId: 'issue-error' },
 ];
 
@@ -162,6 +163,7 @@ if (form) {
       name:  document.getElementById('name').value.trim(),
       phone: document.getElementById('phone').value.trim(),
       area:  areaVal,
+      car:   document.getElementById('car').value.trim(),
       issue: document.getElementById('issue').value.trim(),
       page:  window.location.href,
       time:  new Date().toISOString(),

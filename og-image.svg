@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0f172a"/>
+
+  <!-- Green left accent -->
+  <rect width="8" height="630" fill="#16a34a"/>
+
+  <!-- Green decorative circle (background) -->
+  <circle cx="1050" cy="315" r="320" fill="#16a34a" opacity="0.07"/>
+  <circle cx="1050" cy="315" r="200" fill="#16a34a" opacity="0.07"/>
+
+  <!-- Logo icon box -->
+  <rect x="80" y="72" width="60" height="60" rx="12" fill="#16a34a"/>
+  <g transform="translate(80,72)">
+    <path fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+      transform="translate(9,9) scale(1.75)"
+      d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+  </g>
+
+  <!-- Brand name -->
+  <text x="156" y="111" font-family="Arial Black, Arial, sans-serif" font-size="36" font-weight="900" fill="white">GoodHands</text>
+  <text x="158" y="136" font-family="Arial, sans-serif" font-size="18" fill="#64748b" letter-spacing="2">MOBILE MECHANICS</text>
+
+  <!-- Divider -->
+  <rect x="80" y="168" width="560" height="2" fill="#1e293b"/>
+
+  <!-- Main headline -->
+  <text x="80" y="264" font-family="Arial Black, Arial, sans-serif" font-size="74" font-weight="900" fill="white">Cape Town's</text>
+  <text x="80" y="350" font-family="Arial Black, Arial, sans-serif" font-size="74" font-weight="900" fill="white">Mobile Mechanic</text>
+  <text x="80" y="436" font-family="Arial Black, Arial, sans-serif" font-size="74" font-weight="900" fill="#4ade80">We Come To You</text>
+
+  <!-- Subline -->
+  <text x="80" y="500" font-family="Arial, sans-serif" font-size="26" fill="#64748b">Car repair at your door · From R450 · Southern Suburbs</text>
+
+  <!-- Phone + URL -->
+  <text x="80" y="566" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#4ade80">069 874 0252</text>
+  <text x="1120" y="566" font-family="Arial, sans-serif" font-size="22" fill="#334155" text-anchor="end">goodhands.co.za</text>
+</svg>

@@ -118,6 +118,9 @@ function showSuccess() {
   if (card) card.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' });
 
   trackEvent('form_success', 'booking-complete');
+  if (window.gtag) {
+    gtag('event', 'form_success', { event_category: 'lead', event_label: 'booking-complete' });
+  }
 }
 
 function resetSubmitBtn() {

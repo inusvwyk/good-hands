@@ -61,7 +61,7 @@ document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function(link) {
     var label = this.dataset.gtm || 'call-unknown';
     trackEvent('phone_call_click', label);
     if (window.gtag) {
-      gtag('event', 'conversion', { send_to: 'AW-18009896028/phone_call' });
+      gtag('event', 'conversion', { send_to: 'AW-17948840298/uDWQCLzt3oMcEOqi1u5C' });
     }
   });
 });
@@ -142,10 +142,16 @@ if (form) {
       return;
     }
 
+    var areaVal = document.getElementById('area').value;
+    if (areaVal === 'Other') {
+      var otherVal = document.getElementById('otherArea').value.trim();
+      areaVal = otherVal ? 'Other: ' + otherVal : 'Other';
+    }
+
     var data = {
       name:  document.getElementById('name').value.trim(),
       phone: document.getElementById('phone').value.trim(),
-      area:  document.getElementById('area').value,
+      area:  areaVal,
       issue: document.getElementById('issue').value.trim(),
       page:  window.location.href,
       time:  new Date().toISOString(),
@@ -156,7 +162,7 @@ if (form) {
 
     trackEvent('form_submit', 'booking-form');
     if (window.gtag) {
-      gtag('event', 'conversion', { send_to: 'AW-18009896028/form_submit' });
+      gtag('event', 'conversion', { send_to: 'AW-17948840298/ciVoCIC8m_cbEOqi1u5C' });
     }
 
     // TODO: Replace the URL below with your Formspree endpoint.
@@ -182,6 +188,22 @@ if (form) {
   });
 }
 
+// ── OTHER AREA TOGGLE ─────────────────────────────────────────
+var areaSelect = document.getElementById('area');
+var otherAreaInput = document.getElementById('otherArea');
+if (areaSelect && otherAreaInput) {
+  areaSelect.addEventListener('change', function() {
+    if (this.value === 'Other') {
+      otherAreaInput.classList.remove('hidden');
+      otherAreaInput.required = true;
+    } else {
+      otherAreaInput.classList.add('hidden');
+      otherAreaInput.required = false;
+      otherAreaInput.value = '';
+    }
+  });
+}
+
 // ── SMOOTH SCROLL for #book anchor ───────────────────────────
 document.querySelectorAll('a[href="#book"]').forEach(function(link) {
   link.addEventListener('click', function(e) {
@@ -202,7 +224,7 @@ document.querySelectorAll('a[href="#book"]').forEach(function(link) {
 
   var phoneIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
 
-  bar.innerHTML = '<a href="https://wa.me/27698740252" target="_blank" rel="noopener noreferrer" data-gtm="call-sticky" style="color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;">' + phoneIcon + ' Call Now — 069 874 0252</a>';
+  bar.innerHTML = '<a href="https://wa.me/27698740252" target="_blank" rel="noopener noreferrer" data-gtm="call-sticky" style="color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;">' + phoneIcon + ' WhatsApp Us — 069 874 0252</a>';
   bar.style.cssText = [
     'position:fixed', 'bottom:0', 'left:0', 'right:0',
     'background:#16a34a', 'color:#fff',
@@ -228,7 +250,7 @@ document.querySelectorAll('a[href="#book"]').forEach(function(link) {
   bar.querySelector('a').addEventListener('click', function() {
     trackEvent('phone_call_click', 'call-sticky');
     if (window.gtag) {
-      gtag('event', 'conversion', { send_to: 'AW-18009896028/phone_call' });
+      gtag('event', 'conversion', { send_to: 'AW-17948840298/uDWQCLzt3oMcEOqi1u5C' });
     }
   });
 })();

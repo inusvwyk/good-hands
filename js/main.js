@@ -127,7 +127,7 @@ function showSuccess() {
 function resetSubmitBtn() {
   if (submitBtn) {
     submitBtn.disabled = false;
-    submitBtn.textContent = 'Get My Free Quote';
+    submitBtn.textContent = 'Get a Callout Price';
   }
 }
 

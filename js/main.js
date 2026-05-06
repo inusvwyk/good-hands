@@ -63,7 +63,7 @@ function fireWaConversion(label) {
   lastWaClick = now;
   trackEvent('phone_call_click', label);
   if (window.gtag) {
-    gtag('event', 'conversion', { send_to: 'AW-17948840298/uDWQCLzt3oMcEOqi1u5C' });
+    gtag('event', 'conversion', { send_to: 'AW-17948840298/HN3GCIjyuqgcEOqi1u5C' });
   }
 }
 

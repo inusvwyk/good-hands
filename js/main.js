@@ -73,7 +73,8 @@ document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function(link) {
   });
 });
 
-// ── FORM HANDLING ─────────────────────────────────────────────
+// ── FORM HANDLING (commented out — replaced by WhatsApp flow) ─────────────────
+/*
 var form       = document.getElementById('bookingForm');
 var successMsg = document.getElementById('formSuccess');
 var submitBtn  = document.getElementById('submitBtn');
@@ -177,9 +178,6 @@ if (form) {
       gtag('event', 'conversion', { send_to: 'AW-17948840298/ciVoCIC8m_cbEOqi1u5C' });
     }
 
-    // TODO: Replace the URL below with your Formspree endpoint.
-    // Sign up at https://formspree.io, create a form, and paste your endpoint here.
-    // Example: 'https://formspree.io/f/abcd1234'
     fetch('https://formspree.io/f/mwvyvkkk', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -190,15 +188,16 @@ if (form) {
           showSuccess();
         } else {
           resetSubmitBtn();
-          showFormError('Something went wrong. Please call us on 069 874 0252 to book.');
+          showFormError('Something went wrong. Please call us on 074 266 8491 to book.');
         }
       })
       .catch(function() {
         resetSubmitBtn();
-        showFormError('Network error. Please call us on 069 874 0252 to book.');
+        showFormError('Network error. Please call us on 074 266 8491 to book.');
       });
   });
 }
+*/
 
 // ── OTHER AREA TOGGLE ─────────────────────────────────────────
 var areaSelect = document.getElementById('area');
@@ -236,7 +235,7 @@ document.querySelectorAll('a[href="#book"]').forEach(function(link) {
 
   var phoneIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
 
-  bar.innerHTML = '<a href="https://wa.me/27698740252" target="_blank" rel="noopener noreferrer" data-gtm="call-sticky" style="color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;">' + phoneIcon + ' WhatsApp Us — 069 874 0252</a>';
+  bar.innerHTML = '<a href="https://wa.me/27742668491" target="_blank" rel="noopener noreferrer" data-gtm="call-sticky" style="color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;">' + phoneIcon + ' WhatsApp Us — 074 266 8491</a>';
   bar.style.cssText = [
     'position:fixed', 'bottom:0', 'left:0', 'right:0',
     'background:#16a34a', 'color:#fff',

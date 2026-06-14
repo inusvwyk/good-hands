@@ -151,10 +151,27 @@ if (form) {
       'Car: ' + car + '\n' +
       'Issue: ' + issue;
 
+    submitBtn.disabled    = true;
+    submitBtn.textContent = 'Sending…';
+
     trackEvent('form_submit', 'booking-form');
     if (window.gtag) {
       gtag('event', 'conversion', { send_to: 'AW-17948840298/ciVoCIC8m_cbEOqi1u5C' });
     }
+
+    fetch('https://formspree.io/f/mwvyvkkk', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name: name, phone: phone, area: areaVal, car: car, issue: issue }),
+    })
+      .then(function() {
+        submitBtn.disabled    = false;
+        submitBtn.textContent = 'Get a Callout Price';
+      })
+      .catch(function() {
+        submitBtn.disabled    = false;
+        submitBtn.textContent = 'Get a Callout Price';
+      });
 
     window.open('https://wa.me/27742668491?text=' + encodeURIComponent(message), '_blank');
   });

@@ -74,9 +74,10 @@ document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function(link) {
 });
 
 // ── FORM HANDLING ─────────────────────────────────────────────
-var form      = document.getElementById('bookingForm');
-var submitBtn = document.getElementById('submitBtn');
-var formError = document.getElementById('form-error');
+var form       = document.getElementById('bookingForm');
+var successMsg = document.getElementById('formSuccess');
+var submitBtn  = document.getElementById('submitBtn');
+var formError  = document.getElementById('form-error');
 
 var fields = [
   { id: 'name',  errorId: 'name-error' },
@@ -151,29 +152,33 @@ if (form) {
       'Car: ' + car + '\n' +
       'Issue: ' + issue;
 
-    submitBtn.disabled    = true;
-    submitBtn.textContent = 'Sending…';
-
     trackEvent('form_submit', 'booking-form');
     if (window.gtag) {
       gtag('event', 'conversion', { send_to: 'AW-17948840298/ciVoCIC8m_cbEOqi1u5C' });
     }
 
+    // Fire email in background — fire-and-forget
     fetch('https://formspree.io/f/mwvyvkkk', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({ name: name, phone: phone, area: areaVal, car: car, issue: issue }),
-    })
-      .then(function() {
-        submitBtn.disabled    = false;
-        submitBtn.textContent = 'Get a Callout Price';
-      })
-      .catch(function() {
-        submitBtn.disabled    = false;
-        submitBtn.textContent = 'Get a Callout Price';
-      });
+    }).catch(function() {});
 
-    window.open('https://wa.me/27742668491?text=' + encodeURIComponent(message), '_blank');
+    // Open WhatsApp via anchor click — more reliable than window.open in submit handlers
+    var waUrl = 'https://wa.me/27742668491?text=' + encodeURIComponent(message);
+    var wa = document.createElement('a');
+    wa.href = waUrl;
+    wa.target = '_blank';
+    wa.rel = 'noopener noreferrer';
+    document.body.appendChild(wa);
+    wa.click();
+    document.body.removeChild(wa);
+
+    // Update the fallback link with the pre-filled message and show success state
+    var fallback = document.getElementById('waFallbackLink');
+    if (fallback) fallback.href = waUrl;
+    if (form)       form.hidden = true;
+    if (successMsg) successMsg.hidden = false;
   });
 }
 

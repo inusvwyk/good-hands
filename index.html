@@ -210,6 +210,18 @@
               </button>
               <p class="text-xs text-center text-gray-400">Fill in your details and we'll open WhatsApp with your message ready to send.</p>
             </form>
+
+            <div id="formSuccess" hidden class="text-center py-6 space-y-4">
+              <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto">
+                <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">WhatsApp should be opening…</h3>
+              <p class="text-gray-500 text-sm">If it didn't open automatically, tap the button below.</p>
+              <a id="waFallbackLink" href="https://wa.me/27742668491" target="_blank" rel="noopener noreferrer"
+                 class="btn bg-green-600 hover:bg-green-700 text-white px-6 py-3 mx-auto justify-center">
+                Open WhatsApp
+              </a>
+            </div>
           </div>
         </div>
 

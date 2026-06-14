@@ -73,12 +73,10 @@ document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function(link) {
   });
 });
 
-// ── FORM HANDLING (commented out — replaced by WhatsApp flow) ─────────────────
-/*
-var form       = document.getElementById('bookingForm');
-var successMsg = document.getElementById('formSuccess');
-var submitBtn  = document.getElementById('submitBtn');
-var formError  = document.getElementById('form-error');
+// ── FORM HANDLING ─────────────────────────────────────────────
+var form      = document.getElementById('bookingForm');
+var submitBtn = document.getElementById('submitBtn');
+var formError = document.getElementById('form-error');
 
 var fields = [
   { id: 'name',  errorId: 'name-error' },
@@ -112,26 +110,6 @@ function showFormError(message) {
   }
 }
 
-function showSuccess() {
-  if (form)       form.hidden = true;
-  if (successMsg) successMsg.hidden = false;
-
-  var card = document.getElementById('book');
-  if (card) card.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' });
-
-  trackEvent('form_success', 'booking-complete');
-  if (window.gtag) {
-    gtag('event', 'form_success', { event_category: 'lead', event_label: 'booking-complete' });
-  }
-}
-
-function resetSubmitBtn() {
-  if (submitBtn) {
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Get a Callout Price';
-  }
-}
-
 if (form) {
   form.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -160,44 +138,27 @@ if (form) {
       areaVal = otherVal ? 'Other: ' + otherVal : 'Other';
     }
 
-    var data = {
-      name:  document.getElementById('name').value.trim(),
-      phone: document.getElementById('phone').value.trim(),
-      area:  areaVal,
-      car:   document.getElementById('car').value.trim(),
-      issue: document.getElementById('issue').value.trim(),
-      page:  window.location.href,
-      time:  new Date().toISOString(),
-    };
+    var name  = document.getElementById('name').value.trim();
+    var phone = document.getElementById('phone').value.trim();
+    var car   = document.getElementById('car').value.trim();
+    var issue = document.getElementById('issue').value.trim();
 
-    submitBtn.disabled    = true;
-    submitBtn.textContent = 'Sending…';
+    var message =
+      'Hi GoodHands! I\'d like a callout price.\n\n' +
+      'Name: ' + name + '\n' +
+      'Phone: ' + phone + '\n' +
+      'Area: ' + areaVal + '\n' +
+      'Car: ' + car + '\n' +
+      'Issue: ' + issue;
 
     trackEvent('form_submit', 'booking-form');
     if (window.gtag) {
       gtag('event', 'conversion', { send_to: 'AW-17948840298/ciVoCIC8m_cbEOqi1u5C' });
     }
 
-    fetch('https://formspree.io/f/mwvyvkkk', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(data),
-    })
-      .then(function(res) {
-        if (res.ok) {
-          showSuccess();
-        } else {
-          resetSubmitBtn();
-          showFormError('Something went wrong. Please call us on 074 266 8491 to book.');
-        }
-      })
-      .catch(function() {
-        resetSubmitBtn();
-        showFormError('Network error. Please call us on 074 266 8491 to book.');
-      });
+    window.open('https://wa.me/27742668491?text=' + encodeURIComponent(message), '_blank');
   });
 }
-*/
 
 // ── OTHER AREA TOGGLE ─────────────────────────────────────────
 var areaSelect = document.getElementById('area');
